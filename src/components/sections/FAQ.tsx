@@ -65,7 +65,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-40 px-6 bg-black" id="faq">
+    <section className="py-24 px-6 bg-black" id="faq">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-20">
         
         {/* Sticky Left Label */}

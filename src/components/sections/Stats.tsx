@@ -46,7 +46,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function Stats() {
   return (
-    <section className="py-40 px-6 bg-black border-t border-white/5">
+    <section className="py-24 px-6 bg-black border-t border-white/5">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-20">
         
         {/* Left Label */}

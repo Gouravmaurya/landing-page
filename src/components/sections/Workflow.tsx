@@ -107,7 +107,7 @@ export default function Workflow() {
   }, { scope: containerRef, dependencies: [activeTab] });
 
   return (
-    <section ref={containerRef} className="py-40 px-6 bg-[#050505] relative overflow-hidden" id="workflow">
+    <section ref={containerRef} className="py-24 px-6 bg-[#050505] relative overflow-hidden" id="workflow">
       {/* Background Decorative Gradient */}
       <div className="absolute top-0 right-0 w-[50%] h-full bg-cyan-500/[0.02] blur-[120px] pointer-events-none" />
       

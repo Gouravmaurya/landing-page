@@ -10,7 +10,7 @@ export default function Hero() {
       {/* Background Image with Cinematic Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-bg.png"
+          src="/images/hero.png"
           alt="Cinematic Background"
           fill
           priority
@@ -25,8 +25,8 @@ export default function Hero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.1]">
-            <span className="text-white/40">The AI platform for</span> <br />
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold  mb-8 leading-[1.1]">
+            <span className="text-white/60">The AI platform for</span> <br />
             <span className="text-white">human intelligence</span>
           </h1>
 

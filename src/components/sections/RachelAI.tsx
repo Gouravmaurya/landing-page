@@ -60,7 +60,7 @@ export default function RachelAI() {
   const particles = useMemo(() => [...Array(120)], []);
 
   return (
-    <section className="py-32 px-6 bg-black relative overflow-hidden" id="rachel">
+    <section className="py-24 px-6 bg-black relative overflow-hidden" id="rachel">
       {/* Abstract Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
 

@@ -140,7 +140,7 @@ export default function Features() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="py-40 px-6 bg-black relative" id="features">
+    <section ref={containerRef} className="py-24 px-6 bg-black relative" id="features">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-20">
         
         {/* Sticky Left Label */}
