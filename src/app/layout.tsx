@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "Veraqon uses AI to find, vet, and match the top verified talent with global companies.",
 };
 
+import SmoothScroll from "@/components/providers/SmoothScroll";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-black text-white`}>
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

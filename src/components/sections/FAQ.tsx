@@ -23,35 +23,40 @@ const faqs = [
   }
 ];
 
-function FAQItem({ question, answer, isOpen, onClick }: { question: string, answer: string, isOpen: boolean, onClick: () => void }) {
+function FAQItem({ question, answer, index, isOpen, onClick }: { question: string, answer: string, index: number, isOpen: boolean, onClick: () => void }) {
   return (
-    <div className="border-b border-white/5 last:border-0">
+    <div className="border-b border-white/10 group">
       <button
         onClick={onClick}
-        className="w-full py-6 flex items-center justify-between text-left group"
+        className="w-full py-10 flex items-start gap-8 text-left"
       >
-        <span className={`text-lg md:text-xl font-bold transition-colors ${isOpen ? "text-cyan-400" : "text-neutral-300 group-hover:text-white"}`}>
-          {question}
+        <span className="text-xl font-bold text-neutral-800 tabular-nums pt-1 group-hover:text-cyan-400 transition-colors">
+          0{index + 1}
         </span>
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${isOpen ? "bg-cyan-500 text-black rotate-180" : "bg-white/5 text-white"}`}>
+        <div className="flex-1 space-y-4">
+          <span className={`text-2xl md:text-3xl font-bold tracking-tight transition-colors ${isOpen ? "text-white" : "text-neutral-500 group-hover:text-neutral-300"}`}>
+            {question}
+          </span>
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="overflow-hidden"
+              >
+                <p className="text-neutral-500 text-lg leading-relaxed max-w-2xl py-4">
+                  {answer}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+        <div className={`mt-2 w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-all ${isOpen ? "bg-white text-black border-white" : "text-neutral-500"}`}>
           {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
         </div>
       </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden"
-          >
-            <p className="pb-6 text-neutral-500 leading-relaxed max-w-3xl">
-              {answer}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
@@ -60,25 +65,33 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-32 px-6 bg-black">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">
-            Got questions? <br />
-            <span className="text-neutral-500">We've got answers.</span>
-          </h2>
+    <section className="py-40 px-6 bg-black" id="faq">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-20">
+        
+        {/* Sticky Left Label */}
+        <div className="lg:sticky lg:top-40 lg:h-fit">
+          <span className="text-[24px] font-black uppercase tracking-[0.3em] text-neutral-600">FAQ</span>
         </div>
 
-        <div className="glass p-8 md:p-12 rounded-[2rem] border border-white/5">
-          {faqs.map((faq, i) => (
-            <FAQItem
-              key={i}
-              question={faq.question}
-              answer={faq.answer}
-              isOpen={openIndex === i}
-              onClick={() => setOpenIndex(openIndex === i ? null : i)}
-            />
-          ))}
+        {/* Right Content */}
+        <div className="space-y-20">
+          <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-none font-playfair">
+            Questions? <br />
+            <span className="text-neutral-700 italic">Answered.</span>
+          </h2>
+
+          <div className="border-t border-white/10">
+            {faqs.map((faq, i) => (
+              <FAQItem
+                key={i}
+                index={i}
+                question={faq.question}
+                answer={faq.answer}
+                isOpen={openIndex === i}
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

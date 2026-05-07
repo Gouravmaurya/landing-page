@@ -10,14 +10,13 @@ export default function Hero() {
       {/* Background Image with Cinematic Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-bg-colorful.png"
+          src="/images/hero-bg.png"
           alt="Cinematic Background"
           fill
           priority
-          className="object-cover opacity-80 scale-105"
+          className="object-cover opacity-60 scale-105 animate-slow-zoom"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_black_100%)] opacity-70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
       </div>
 
       <div className="relative z-10 max-w-5xl px-6 text-center">
@@ -25,18 +24,12 @@ export default function Hero() {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col items-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-            <span className="text-xs font-medium tracking-widest uppercase text-cyan-400">Trusted by Global Enterprises</span>
-          </div>
-
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-8 text-gradient leading-[1.05]">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tight mb-8 text-gradient">
             The AI platform for <br />
-            <span className="text-white font-serif italic font-medium">human intelligence</span>
+            <span className="text-white">human intelligence</span>
           </h1>
-          
+
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <button className="flex items-center gap-3 bg-white text-black px-8 py-4 rounded-full text-lg font-bold hover:scale-105 transition-all group">
               <span className="bg-black text-white p-1 rounded-full group-hover:rotate-45 transition-transform">

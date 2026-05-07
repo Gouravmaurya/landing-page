@@ -46,21 +46,29 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function Stats() {
   return (
-    <section className="py-32 px-6 bg-black">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
+    <section className="py-40 px-6 bg-black border-t border-white/5">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-20">
+        
+        {/* Left Label */}
+        <div className="lg:sticky lg:top-40 lg:h-fit">
+          <span className="text-[24px] font-black uppercase tracking-[0.3em] text-neutral-600">Metric Impact</span>
+        </div>
+
+        {/* Right Content */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-16">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="text-center space-y-2"
+              transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-4"
             >
-              <h3 className="text-4xl md:text-6xl font-bold text-white tracking-tighter">
+              <h3 className="text-5xl md:text-7xl font-bold text-white tracking-tighter font-playfair">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </h3>
-              <p className="text-neutral-500 font-medium uppercase text-xs tracking-widest">
+              <div className="h-px w-full bg-white/10" />
+              <p className="text-neutral-500 font-bold uppercase text-[10px] tracking-widest">
                 {stat.label}
               </p>
             </motion.div>
