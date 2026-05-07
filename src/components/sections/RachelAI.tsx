@@ -2,11 +2,18 @@
 
 import { motion } from "framer-motion";
 import { Mic, Volume2, ShieldCheck, Zap } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 function NeuralParticle({ index }: { index: number }) {
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Generate random base parameters
   const randomParams = useMemo(() => {
+    if (!mounted) return null;
     const angle = (index / 100) * Math.PI * 2;
     const baseRadius = 30 + Math.random() * 120;
     return {
@@ -18,7 +25,9 @@ function NeuralParticle({ index }: { index: number }) {
       opacity: 0.1 + Math.random() * 0.5,  // Randomized base opacity
       scaleRange: 1.2 + Math.random() * 0.8, // Randomized scale range
     };
-  }, [index]);
+  }, [index, mounted]);
+
+  if (!mounted || !randomParams) return null;
 
   return (
     <motion.div

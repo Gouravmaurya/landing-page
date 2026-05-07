@@ -27,7 +27,7 @@ export default function CinematicReveal() {
           className="relative w-full h-full"
         >
           <Image
-            src="/images/hero-bg.png" // Using existing hero bg for now, ideally an aerial shot
+            src="/images/nature-bg.png"
             alt="Cinematic Reveal"
             fill
             className="object-cover brightness-75"
